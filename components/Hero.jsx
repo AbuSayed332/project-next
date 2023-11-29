@@ -25,7 +25,7 @@ const Hero = () => {
                 </Button>
               </Link>
 
-              <Button variant="secandary" className="gap-x-2">
+              <Button variant="secondary" className="gap-x-2">
                 Download CV <Download size={18} />
               </Button>
             </div>
