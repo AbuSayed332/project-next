@@ -1,7 +1,15 @@
 "use client";
 import { Download, Send } from "lucide-react";
 import Link from "next/link";
-import { RiArrowDownSLine } from "react-icons/ri";
+import {
+  RiArrowDownSLine,
+  RiBriefcase4Fill,
+  RiTeamFill,
+  RiTodoFill,
+} from "react-icons/ri";
+import Bedge from "./ui/Bedge";
+import DevImg from "./ui/DevImg";
+import Socials from "./ui/Socials";
 import { Button } from "./ui/button";
 
 const Hero = () => {
@@ -24,13 +32,42 @@ const Hero = () => {
                   Contact me <Send size={18} />
                 </Button>
               </Link>
-
-              <Button variant="secondary" className="gap-x-2">
+              <Button variant="Scondary" className="gap-x-2">
                 Download CV <Download size={18} />
               </Button>
             </div>
+            <Socials
+              containerStyles="flex gap-x-6 mx-auto xl:mx-0"
+              iconsStyles="text-foreground text-[22px] hover:text-primary transition-all"
+            />
           </div>
-          <div className="hidden xl:flex relative"> Image </div>
+          <div className="hidden xl:flex relative">
+            <Bedge
+              containerStlyes="absolute top-[24%] -left-[5rem]"
+              icon={<RiBriefcase4Fill />}
+              endCountNum={3}
+              badgeText="Years of Exprience"
+            />
+            <Bedge
+              containerStlyes="absolute top-[88%] -left-[5rem]"
+              icon={<RiTodoFill />}
+              endCountNum={6}
+              endCountText="k"
+              badgeText="Finished Projects"
+            />
+            <Bedge
+              containerStlyes="absolute top-[50%] -right-8"
+              icon={<RiTeamFill />}
+              endCountNum={9}
+              endCountText="k"
+              badgeText="Happy Clients"
+            />
+            <div className="bg-hero_shape2_light dark:bg-hero_shape2_dark w-[500px] h-[500px] bg-no-repeat absolute -top-1 -right-2"></div>
+            <DevImg
+              containerStyles="bg-hero_shape w-[510px] h-[462px] bg-no-repeat relative bg-bottom"
+              imgSrc="/hero/developer.png"
+            />
+          </div>
         </div>
         <div className="hidden md:flex absolute left-2/4 bottom-44 xl:bottom-12 animate-bounce">
           <RiArrowDownSLine className="text-3xl text-primary" />
