@@ -33,7 +33,7 @@ const Header = () => {
               underlineStyles="absolute left-0 top-full h-[2px] bg-primary w-full"
             />
             <ThemeTogaler />
-            <div>
+            <div className="xl:hidden">
               <MobileNav />
             </div>
           </div>
