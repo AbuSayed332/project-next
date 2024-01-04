@@ -7,18 +7,18 @@ import Nav from "./ui/Nav";
 import Logo from "./ui/logo";
 
 const Header = () => {
-  const [header, setHeader] = useState(false);
+  const [headers, setHeader] = useState(false);
   const pathname = usePathname();
   useEffect(() => {
-    const scrollYpos = window.addEventListener("scroll", () => {
+    const scrollYPos = window.addEventListener("scroll", () => {
       window.scrollY > 50 ? setHeader(true) : setHeader(false);
     });
-    return () => window.removeEventListener("scroll", scrollYpos);
-  });
+    return () => window.removeEventListener("scroll", scrollYPos);
+  }, []);
   return (
     <header
       className={`${
-        header
+        headers
           ? "py-4 bg-white shadow-lg dark:bg-accent"
           : "py-6 dark:bg-transparent"
       } sticky top-0 z-30 transition-all ${pathname === "/" && "bg-[#fef9f5]"}`}
