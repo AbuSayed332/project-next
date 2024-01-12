@@ -32,7 +32,7 @@ const Hero = () => {
                   Contact me <Send size={18} />
                 </Button>
               </Link>
-              <Button variant="Scondary" className="gap-x-2">
+              <Button variant="secondary" className="gap-x-2">
                 Download CV <Download size={18} />
               </Button>
             </div>

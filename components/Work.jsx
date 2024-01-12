@@ -102,7 +102,7 @@ const Work = () => {
             rerum exercitationem adipisci. Iusto inventore odio minus aliquid
             quo facere asperiores beatae mollitia accusamus!
           </p>
-          <Link href="/projects">
+          <Link href="/project">
             <Button>All projects</Button>
           </Link>
         </div>
