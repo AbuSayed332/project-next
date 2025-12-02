@@ -3,11 +3,14 @@ import { AlignJustify } from "lucide-react";
 import Nav from "./Nav";
 import Socials from "./Socials";
 import Logo from "./logo";
+
 const MobileNav = () => {
   return (
     <Sheet>
-      <SheetTrigger oschild>
-        <AlignJustify className="cursor-pointer" />
+      <SheetTrigger asChild>
+        <button className="xl:hidden" aria-label="Open menu">
+          <AlignJustify className="cursor-pointer" />
+        </button>
       </SheetTrigger>
       <SheetContent>
         <div className="flex flex-col items-center justify-between h-full py-8">

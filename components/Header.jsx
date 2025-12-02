@@ -1,49 +1,3 @@
-// "use client";
-// import { usePathname } from "next/navigation";
-// import { useEffect, useState } from "react";
-// import ThemeTogaler from "./ThemeTogaler";
-// import MobileNav from "./ui/MobileNav";
-// import Nav from "./ui/Nav";
-// import Logo from "./ui/logo";
-
-// const Header = () => {
-//   const [headers, setHeader] = useState(false);
-//   const pathname = usePathname();
-//   useEffect(() => {
-//     const scrollYPos = window.addEventListener("scroll", () => {
-//       window.scrollY > 50 ? setHeader(true) : setHeader(false);
-//     });
-//     return () => window.removeEventListener("scroll", scrollYPos);
-//   }, []);
-//   return (
-//     <header
-//       className={`${
-//         headers
-//           ? "py-4 bg-white shadow-lg dark:bg-accent"
-//           : "py-6 dark:bg-transparent"
-//       } sticky top-0 z-30 transition-all ${pathname === "/" && "bg-[#fef9f5]"}`}
-//     >
-//       <div className="container mx-auto">
-//         <div className="flex justify-between items-center">
-//           <Logo />
-//           <div className="flex items-center gap-x-6">
-//             <Nav
-//               containerStyles="hidden xl:flex gap-x-8 items-center"
-//               linkStyles="relative hover:text-primary transition-all"
-//               underlineStyles="absolute left-0 top-full h-[2px] bg-primary w-full"
-//             />
-//             <ThemeTogaler />
-//             <div className="xl:hidden">
-//               <MobileNav />
-//             </div>
-//           </div>
-//         </div>
-//       </div>
-//     </header>
-//   );
-// };
-
-// export default Header;
 
 "use client";
 import { usePathname } from "next/navigation";
@@ -66,14 +20,15 @@ const Header = () => {
 
   // Define different styles based on pathname
   const getHeaderStyles = () => {
-    const baseClasses = "sticky top-0 z-30 transition-all";
-    
-    // Scrolled state styles
-    const scrolledClasses = "py-4 bg-white shadow-lg dark:bg-accent";
-    
+    const baseClasses = "sticky top-0 z-50 transition-all duration-500";
+
+    // Scrolled state styles with glassmorphism
+    const scrolledClasses =
+      "py-3 bg-white/80 dark:bg-accent/80 backdrop-blur-lg shadow-lg border-b border-border/50";
+
     // Default (not scrolled) styles based on path
     let defaultClasses = "py-6 dark:bg-transparent";
-    
+
     // Customize design per route
     if (pathname === "/") {
       defaultClasses = "py-6 bg-[#fef9f5] dark:bg-transparent";
@@ -94,46 +49,92 @@ const Header = () => {
 
   // Get nav styles based on pathname
   const getNavStyles = () => {
+    const baseStyles = "relative font-medium transition-all duration-300";
+    
     if (pathname === "/about") {
-      return "relative hover:text-blue-600 transition-all";
+      return `${baseStyles} hover:text-blue-600 hover:scale-110`;
     } else if (pathname === "/services") {
-      return "relative hover:text-green-600 transition-all";
+      return `${baseStyles} hover:text-green-600 hover:scale-110`;
     } else if (pathname === "/contact") {
-      return "relative hover:text-purple-600 transition-all";
+      return `${baseStyles} hover:text-purple-600 hover:scale-110`;
     }
-    return "relative hover:text-primary transition-all";
+    return `${baseStyles} hover:text-primary hover:scale-110`;
   };
 
   // Get underline color based on pathname
   const getUnderlineStyles = () => {
+    const baseUnderline = "absolute left-0 top-full h-[2px] w-full rounded-full transition-all duration-300";
+    
     if (pathname === "/about") {
-      return "absolute left-0 top-full h-[2px] bg-blue-600 w-full";
+      return `${baseUnderline} bg-gradient-to-r from-blue-400 to-blue-600 shadow-lg shadow-blue-500/50`;
     } else if (pathname === "/services") {
-      return "absolute left-0 top-full h-[2px] bg-green-600 w-full";
+      return `${baseUnderline} bg-gradient-to-r from-green-400 to-green-600 shadow-lg shadow-green-500/50`;
     } else if (pathname === "/contact") {
-      return "absolute left-0 top-full h-[2px] bg-purple-600 w-full";
+      return `${baseUnderline} bg-gradient-to-r from-purple-400 to-purple-600 shadow-lg shadow-purple-500/50`;
     }
-    return "absolute left-0 top-full h-[2px] bg-primary w-full";
+    return `${baseUnderline} bg-gradient-to-r from-primary/70 to-primary shadow-lg shadow-primary/50`;
   };
 
   return (
     <header className={getHeaderStyles()}>
-      <div className="container mx-auto">
+      {/* Animated background gradient effect */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute -top-24 -right-24 w-96 h-96 bg-primary/5 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute -top-24 -left-24 w-96 h-96 bg-primary/5 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
+      </div>
+
+      <div className="container mx-auto relative z-10">
         <div className="flex justify-between items-center">
-          <Logo />
+          {/* Logo with animation */}
+          <div className="transform transition-all duration-300 hover:scale-110">
+            <Logo />
+          </div>
+
           <div className="flex items-center gap-x-6">
-            <Nav
-              containerStyles="hidden xl:flex gap-x-8 items-center"
-              linkStyles={getNavStyles()}
-              underlineStyles={getUnderlineStyles()}
-            />
-            <ThemeTogaler />
-            <div className="xl:hidden">
+            {/* Navigation with enhanced styling */}
+            <div className="hidden xl:block">
+              <Nav
+                containerStyles="flex gap-x-8 items-center"
+                linkStyles={getNavStyles()}
+                underlineStyles={getUnderlineStyles()}
+              />
+            </div>
+
+            {/* Theme Toggler with enhanced styling */}
+            <div className="transform transition-all duration-300 hover:scale-110 hover:rotate-12">
+              <ThemeTogaler />
+            </div>
+
+            {/* Mobile Nav with animation */}
+            <div className="xl:hidden transform transition-all duration-300 hover:scale-110">
               <MobileNav />
             </div>
           </div>
         </div>
       </div>
+
+      {/* Bottom border gradient effect when scrolled */}
+      {headers && (
+        <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-primary/50 to-transparent"></div>
+      )}
+
+      {/* Custom Animations */}
+      <style jsx>{`
+        @keyframes slideDown {
+          from {
+            transform: translateY(-100%);
+            opacity: 0;
+          }
+          to {
+            transform: translateY(0);
+            opacity: 1;
+          }
+        }
+
+        header {
+          animation: slideDown 0.5s ease-out;
+        }
+      `}</style>
     </header>
   );
 };

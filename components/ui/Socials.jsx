@@ -1,3 +1,4 @@
+
 "use client";
 import Link from "next/link";
 import {
@@ -6,31 +7,33 @@ import {
   RiLinkedinFill,
   RiYoutubeFill,
 } from "react-icons/ri";
+
 const icons = [
   {
-    path: "/",
-    lebal: <RiLinkedinFill />,
+    path: "https://www.linkedin.com/in/md-abu-sayed-165892203",
+    label: <RiLinkedinFill />,
   },
   {
     path: "https://github.com/AbuSayed332",
-    lebal: <RiGithubFill />,
+    label: <RiGithubFill />,
   },
   {
     path: "/",
-    lebal: <RiFacebookBoxFill />,
+    label: <RiFacebookBoxFill />,
   },
   {
     path: "/",
-    lebal: <RiYoutubeFill />,
+    label: <RiYoutubeFill />,
   },
 ];
+
 const Socials = ({ containerStyles, iconsStyles }) => {
   return (
     <div className={`${containerStyles}`}>
-      {icons.map(({ path, lebal, index }) => {
+      {icons.map((icon, index) => {
         return (
-          <Link href={path} key={index}>
-            <div className={`${iconsStyles}`}>{lebal} </div>
+          <Link href={icon.path} key={index}>
+            <div className={`${iconsStyles}`}>{icon.label}</div>
           </Link>
         );
       })}

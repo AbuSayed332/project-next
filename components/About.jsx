@@ -24,7 +24,7 @@ const infeData = [
   },
   {
     icon: <MailIcon size={20} />,
-    text: "engineerabusayed1@gmail.com",
+    text: "sabujrh87@gmail.com",
   },
   {
     icon: <Calendar size={20} />,
@@ -36,7 +36,7 @@ const infeData = [
   },
   {
     icon: <HomeIcon size={20} />,
-    text: "309/4 Jafrabad, East Dhanmondi, Dhaka-1209",
+    text: "House #70, Road #03, Mohammadpur, Dhaka 1207",
   },
 ];
 
@@ -45,39 +45,34 @@ const qulificationData = [
     title: "education",
     data: [
       {
-        university: "Humdard university Bangladesh",
-        qualification: "Bachelor of Science",
+        university: "Hamdard University Bangladesh",
+        qualification: "Bachelor of Science in CSE",
         years: "2015-2019",
       },
       {
-        university: "Balorampur Ardash College",
-        qualification: "Higher School Certificate",
+        university: "Balarampur Ideal College",
+        qualification: "Higher Secondary Certificate",
         years: "2012-2014",
       },
       {
-        university: "Pathraj Ardash High School",
+        university: "Pathraj Ideal High School",
         qualification: "Secondary School Certificate",
-        years: "2010-2012",
+        years: "2010",
       },
     ],
   },
   {
-    title: "exprience",
+    title: "experience",
     data: [
       {
-        company: "Digicon Ltd.",
-        role: "Software Engineer",
-        years: "2020-2021",
-      },
-      {
-        company: "MSBD Ltd.",
-        role: "Software Devloper",
-        years: "2021-2022",
+        company: "Include Work IT",
+        role: "Software Developer",
+        years: "April 2024 - Present",
       },
       {
         company: "Istana Ltd.",
-        role: "Senior Software Developer",
-        years: "2022-Present",
+        role: "Senior IT Executive",
+        years: "Jan 2022 - April 2024",
       },
     ],
   },
@@ -88,16 +83,22 @@ const skillData = [
     title: "skills",
     data: [
       {
-        name: "HTML, CSS, Tailwind css",
+        name: "React.js, Redux, Next.js",
       },
       {
-        name: "JavaScript, C++, Java",
+        name: "HTML5, CSS3, Tailwind CSS",
       },
       {
-        name: "Recat.js, Next.js",
+        name: "JavaScript (ES6+), TypeScript",
       },
       {
-        name: "Node.js, MongoDB, Express.js",
+        name: "Node.js, Express.js, MongoDB",
+      },
+      {
+        name: "RESTful APIs, Git, GitHub",
+      },
+      {
+        name: "Performance Optimization",
       },
     ],
   },
@@ -126,7 +127,7 @@ const About = () => {
   };
 
   return (
-    <section className="xl:h-[860px] pb-12 xl:py-24 relative overflow-hidden">
+    <section className="min-h-screen pb-12 xl:pb-24 pt-12 xl:pt-24 relative overflow-hidden">
       {/* Animated Background Elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-40 right-20 w-96 h-96 bg-primary/5 rounded-full blur-3xl animate-pulse"></div>
@@ -205,12 +206,12 @@ const About = () => {
                 <TabsContent value="personal" className="animate-fade-in">
                   <div className="text-center xl:text-left">
                     <h3 className="h3 mb-4 bg-gradient-to-r from-foreground to-primary bg-clip-text text-transparent">
-                      Unmatched Service Quality for Over 5 Years
+                      Passionate MERN Stack Developer with 4+ Years Experience
                     </h3>
                     <p className="subtitle max-w-xl mx-auto xl:mx-0 mb-8">
-                      I specialize in crafting intuitive websites with
-                      cutting-edge technology, delivering dynamic and engaging
-                      user experiences.
+                      I specialize in building scalable, efficient, and user-friendly web applications 
+                      using modern technologies. Proficient in React.js, Redux, Next.js, and the complete 
+                      MERN stack with a focus on performance optimization and security best practices.
                     </p>
 
                     {/* Enhanced Info Cards */}
@@ -238,7 +239,10 @@ const About = () => {
                         Language Skills
                       </div>
                       <div className="border-b border-border"></div>
-                      <div className="font-medium">English, Bangla, Arabic</div>
+                      <div className="font-medium">
+                        <div className="mb-1">• Bangla - Native</div>
+                        <div>• English - Fluent</div>
+                      </div>
                     </div>
                   </div>
                 </TabsContent>
@@ -256,12 +260,12 @@ const About = () => {
                           <div className="p-2 bg-primary/10 rounded-lg">
                             <Briefcase />
                           </div>
-                          <h4 className="capitalize font-semibold">
-                            {getData(qulificationData, "exprience").title}
+                                                      <h4 className="capitalize font-semibold">
+                            {getData(qulificationData, "experience").title}
                           </h4>
                         </div>
                         <div className="flex flex-col gap-y-8">
-                          {getData(qulificationData, "exprience").data.map(
+                          {getData(qulificationData, "experience").data.map(
                             (item, index) => {
                               const { company, role, years } = item;
                               return (
