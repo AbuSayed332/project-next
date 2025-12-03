@@ -2,10 +2,11 @@
 "use client";
 import ProjectCard from "@/components/ProjectCard";
 import Link from "next/link";
-import { Sparkles, ArrowRight } from "lucide-react";
+import { Sparkles, ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 import "swiper/css";
 import "swiper/css/pagination";
-import { Pagination } from "swiper/modules";
+import "swiper/css/navigation";
+import { Pagination, Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Button } from "./ui/button";
 
@@ -103,7 +104,8 @@ const Work = () => {
       </div>
 
       <div className="container mx-auto relative z-10">
-        <div className="max-w-[400px] mx-auto xl:mx-0 text-center xl:text-left mb-12 xl:h-[400px] flex flex-col justify-center items-center xl:items-start animate-fade-in">
+        <div className="xl:flex xl:justify-between xl:items-center">
+          <div className="max-w-[400px] mx-auto xl:mx-0 text-center xl:text-left mb-16 xl:mb-0 flex flex-col justify-center items-center xl:items-start animate-fade-in">
           {/* Enhanced Section Title */}
           <div className="inline-flex items-center gap-2 mb-4">
             <Sparkles className="w-5 h-5 text-primary animate-pulse" />
@@ -116,7 +118,7 @@ const Work = () => {
             Latest Projects
           </h2>
 
-          <p className="subtitle mb-8 leading-relaxed">
+          <p className="subtitle mb-8 leading-relaxed ">
             Explore my recent work showcasing modern web applications built with
             cutting-edge technologies. Each project demonstrates my commitment to
             clean code, stunning design, and exceptional user experience.
@@ -127,7 +129,7 @@ const Work = () => {
               <span className="relative z-10 flex items-center gap-2">
                 All projects
                 <ArrowRight 
-                  size={18} 
+                  size={20} 
                   className="group-hover:translate-x-1 transition-transform" 
                 />
               </span>
@@ -136,11 +138,11 @@ const Work = () => {
           </Link>
 
           {/* Decorative Line */}
-          <div className="hidden xl:block absolute bottom-0 left-0 w-32 h-1 bg-gradient-to-r from-primary to-transparent rounded-full"></div>
+            <div className="hidden xl:block w-32 h-1 bg-gradient-to-r from-primary to-transparent rounded-full mt-8"></div>
         </div>
 
         {/* Projects Slider */}
-        <div className="xl:max-w-[1000px] xl:absolute right-0 top-0 animate-slide-in-right animation-delay-300">
+          <div className="relative xl:max-w-[650px] animate-slide-in-right animation-delay-300">
           <Swiper
             className="h-[480px]"
             slidesPerView={1}
@@ -150,12 +152,25 @@ const Work = () => {
               },
             }}
             spaceBetween={30}
-            modules={[Pagination]}
+            modules={[Pagination, Navigation]}
             pagination={{ 
               clickable: true,
               dynamicBullets: true,
             }}
+            navigation={{
+              nextEl: '.swiper-button-next-custom',
+              prevEl: '.swiper-button-prev-custom',
+            }}
           >
+            {/* Custom Navigation Buttons */}
+            <div className="swiper-button-prev-custom absolute top-1/2 left-0 -translate-y-1/2 z-10 w-12 h-12 bg-primary/80 hover:bg-primary text-white rounded-full flex items-center justify-center cursor-pointer transition-all duration-300 -translate-x-1/2 xl:-translate-x-1/2 opacity-0 group-hover/slider:opacity-100">
+              <ChevronLeft size={24} />
+            </div>
+            <div className="swiper-button-next-custom absolute top-1/2 right-0 -translate-y-1/2 z-10 w-12 h-12 bg-primary/80 hover:bg-primary text-white rounded-full flex items-center justify-center cursor-pointer transition-all duration-300 translate-x-1/2 xl:translate-x-1/2 opacity-0 group-hover/slider:opacity-100">
+              <ChevronRight size={24} />
+            </div>
+
+
             {projectData.slice(0, 4).map((project, index) => {
               return (
                 <SwiperSlide key={index} className="pb-12">
@@ -168,12 +183,14 @@ const Work = () => {
                 </SwiperSlide>
               );
             })}
+
           </Swiper>
 
           {/* Decorative Elements */}
-          <div className="hidden xl:block absolute -bottom-10 -right-10 w-32 h-32 border-4 border-primary/20 rounded-full animate-spin-slow"></div>
-          <div className="hidden xl:block absolute -top-10 -left-10 w-24 h-24 border-4 border-primary/30 rounded-full animate-pulse"></div>
+            <div className="hidden xl:block absolute -bottom-10 -right-10 w-32 h-32 border-4 border-primary/20 rounded-full animate-spin-slow"></div>
+            <div className="hidden xl:block absolute -top-10 -left-10 w-24 h-24 border-4 border-primary/30 rounded-full animate-pulse"></div>
         </div>
+      </div>
       </div>
 
       {/* Custom Animations */}
